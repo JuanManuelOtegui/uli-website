@@ -3,9 +3,9 @@
 'use strict';
 var D=document, W=window;
 var ES=W.ULI_ES||{};
-var LANG='en';
-try{ LANG=localStorage.getItem('uli_lang')||(((navigator.language||'').toLowerCase().indexOf('pt')===0)?'pt':'en'); }catch(e){}
-try{ var q=new URLSearchParams(location.search).get('lang'); if(q==='es'||q==='en'||q==='pt') LANG=q; }catch(e){}
+var PL=W.ULI_PL||'en'; var LANG=PL;
+function langPath(l){ var p=location.pathname.replace(/^\/(pt|es)(?=\/|$)/,'')||'/'; return l==='en'?p:'/'+l+(p==='/'?'/':p); }
+function goLang(l){ try{localStorage.setItem('uli_lang',l)}catch(e){} if(l===PL) return; location.href=langPath(l)+location.hash; }
 
 /* ---------- content that lives in JS (modals) ---------- */
 var UI={
@@ -67,7 +67,7 @@ function T(){return UI[LANG]||UI.es}
 /* ---------- language ---------- */
 function applyLang(l){
   LANG=l; try{localStorage.setItem('uli_lang',l)}catch(e){}
-  D.documentElement.lang=l;
+  D.documentElement.lang=(l==='pt'?'pt-BR':l);
   $$('[data-i]').forEach(function(el){
     if(el._en===undefined) el._en=el.innerHTML;
     var key=el.getAttribute('data-i'), P=W.ULI_PT||{}, v=el._en;
@@ -111,7 +111,7 @@ function toggleMenu(open){
   D.body.style.overflow=o?'hidden':'';
 }
 if(bg&&mm){ bg.addEventListener('click',function(){toggleMenu()}); $$('a',mm).forEach(function(a){a.addEventListener('click',function(){toggleMenu(false)})}); }
-$$('.lang button').forEach(function(b){b.addEventListener('click',function(){applyLang(b.getAttribute('data-l'))})});
+$$('.lang button').forEach(function(b){b.addEventListener('click',function(){goLang(b.getAttribute('data-l'))})});
 
 /* ---------- reveal + counters ---------- */
 function fmtCount(el,n){
