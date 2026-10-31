@@ -5,8 +5,7 @@ var D=document, W=window;
 var ES=W.ULI_ES||{};
 var LANG='en';
 try{ LANG=localStorage.getItem('uli_lang')||'en'; }catch(e){}
-if(LANG!=='pt'&&LANG!=='es') LANG='en';
-try{ var q=new URLSearchParams(location.search).get('lang'); if(q==='es'||q==='en'||q==='pt') LANG=q; }catch(e){}
+try{ var q=new URLSearchParams(location.search).get('lang'); if(q==='es'||q==='en') LANG=q; }catch(e){}
 
 /* ---------- content that lives in JS (modals) ---------- */
 var UI={
@@ -58,28 +57,6 @@ var MODELS=[
       tr:['Cultivos principales: soja, maíz, trigo, cebada y colza','Doble cultivo verano + invierno en suelos de alto índice CONEAT','Zona arrocera: arrendamiento de aproximadamente US$296 por hectárea por año sobre tierras de US$3.000–5.000 por hectárea (estimación de ULI; rendimiento bruto ~6–10%)','Producción propia o arrendamiento fijo a un productor certificado']}}
 ];
 
-
-/* ---------- Português (PT) ---------- */
-UI.pt={ sending:'A enviar…', sent:'Enviado ✓', ok:'Obrigado: entraremos em contacto no prazo de 24 horas.', err:'Algo correu mal. Por favor, escreva-nos diretamente por e-mail.',
-  tag_adv:'A vantagem do Uruguai', hist:'Dados históricos de mercado; não constituem uma projeção nem uma oferta.',
-  entry:'Preço de entrada por hectare', lease:'Arrendamento de mercado', gy:'Rendimento bruto por arrendamento', sector:'Setor' };
-ADV['1'].pt=['Estado de direito e direitos de propriedade','As garantias constitucionais de propriedade aplicam-se por igual aos investidores estrangeiros. Não existem restrições à propriedade da terra nem à repatriação de capital. Compra totalmente remota mediante procuração uruguaia. O título é registado no Registo da Propriedade nacional desde o primeiro dia.'];
-ADV['2'].pt=['Polo global de commodities','A agricultura, a pecuária e a florestação representam mais de 80% das exportações de bens. O Uruguai conta-se entre os principais exportadores mundiais de soja, arroz, lacticínios, carne bovina e trigo, com fluxos comerciais diretos para a China, a UE e o MERCOSUL através de portos de águas profundas.'];
-ADV['3'].pt=['Enquadramento de otimização fiscal','Isenções significativas para a florestação ao abrigo da Lei 15.939. Regime previsível do IRNR sobre rendas rurais. Acesso a zonas francas. Os investidores estrangeiros podem beneficiar de isenções sobre rendimentos de fonte estrangeira ao abrigo de determinadas estruturas de residência.'];
-ADV['4'].pt=['Logística industrial integrada','Uma rede ferroviária renovada, uma malha viária pavimentada e portos de águas profundas oferecem acesso logístico direto aos mercados globais. A UPM, a Montes del Plata e a Marfrig operam à escala industrial em todo o país.'];
-ADV['5'].pt=['Diversificação em ativos reais','A terra agrícola é um ativo real tangível, com rendimentos de produção ou arrendamento. O preço médio nacional da terra no Uruguai foi de US$4.178 por hectare em 2025 (MGAP-DIEA). Dados históricos de mercado; não constituem uma projeção.'];
-ADV['6'].pt=['Eficiência de crescimento biológico','Clima temperado com ~1.200 mm de chuva anual. Mais de 90% da terra apta para uso agrícola ou florestal produtivo. Solos entre os mais produtivos da América do Sul. Produtividade biológica durante todo o ano, com um risco climático mínimo.'];
-MODELS[0].pt={t:'Florestação',tag:'Produção própria ou arrendamento',price:'US$2.800–3.500',rent:'~US$169 por hectare por ano (2025)',y:'~4,8–6,0% (renda ÷ preço, antes de custos e impostos)',
-  src:'Fontes: dados de mercado da ULI (preços da terra); MGAP-DIEA (arrendamentos, 2025).',
-  tr:['Madeira vendida mediante contratos de 12 ou 24 anos com a indústria de celulose e as serrações','Isenção do imposto sobre o rendimento durante 12 anos em solos de prioridade florestal (Lei 15.939)','Produção própria ou arrendamento fixo da terra']};
-MODELS[1].pt={t:'Pecuária',tag:'Produção própria ou arrendamento',price:'US$1.900–3.700',rent:'~US$85 por hectare por ano (2025)',y:'~2,3–4,5% (renda ÷ preço, antes de custos e impostos)',
-  src:'Fontes: MGAP-DIEA (preços da terra 2024–1.º sem. 2025; arrendamentos 2025). Intervalos de preço elaborados pela ULI por departamento, índice CONEAT e dimensão da operação.',
-  tr:['Gado criado a pasto em pastagem natural: cria, recria, engorda ou ciclo completo','100% de rastreabilidade do gado (Lei 17.997, SNIG); a carne bovina é a principal exportação do Uruguai (US$2.680 milhões em 2025)','Produção própria ou arrendamento anual fixo em dólares']};
-MODELS[2].pt={t:'Agricultura',tag:'Produção própria ou arrendamento',price:'US$5.700–10.300',rent:'~US$275 por hectare por ano (2025)',y:'~2,7–4,8% (renda ÷ preço, antes de custos e impostos)',
-  src:'Fontes: MGAP-DIEA (preços da terra 2024–1.º sem. 2025; arrendamentos 2025). Intervalos de preço elaborados pela ULI por departamento, índice CONEAT e dimensão da operação. Zona arrozeira: estimativa da ULI.',
-  tr:['Culturas principais: soja, milho, trigo, cevada e colza','Duplo cultivo verão + inverno em solos de elevado índice CONEAT','Zona arrozeira: arrendamento de aproximadamente US$296 por hectare por ano sobre terras de US$3.000–5.000 por hectare (estimativa da ULI; rendimento bruto ~6–10%)','Produção própria ou arrendamento fixo a um produtor certificado']};
-var PTDICT=W.ULI_PT||{};
-
 /* ---------- helpers ---------- */
 function $(s,r){return (r||D).querySelector(s)}
 function $$(s,r){return Array.prototype.slice.call((r||D).querySelectorAll(s))}
@@ -91,20 +68,19 @@ function applyLang(l){
   D.documentElement.lang=l;
   $$('[data-i]').forEach(function(el){
     if(el._en===undefined) el._en=el.innerHTML;
-    var d=(l==='es')?ES:(l==='pt')?(W.ULI_PT||{}):null, k=el.getAttribute('data-i');
-    var v=(d&&d[k]!=null)?d[k]:el._en;
+    var v=(l==='es'&&ES[el.getAttribute('data-i')]!=null)?ES[el.getAttribute('data-i')]:el._en;
     el.innerHTML=v;
   });
-  $$('[data-ph-es],[data-ph-pt]').forEach(function(el){
+  $$('[data-ph-es]').forEach(function(el){
     if(el._ph===undefined) el._ph=el.getAttribute('placeholder')||'';
-    el.setAttribute('placeholder',(l!=='en'&&el.getAttribute('data-ph-'+l))?el.getAttribute('data-ph-'+l):el._ph);
+    el.setAttribute('placeholder',l==='es'?el.getAttribute('data-ph-es'):el._ph);
   });
-  $$('[data-alt-es],[data-alt-pt]').forEach(function(el){
+  $$('[data-alt-es]').forEach(function(el){
     if(el._alt===undefined) el._alt=el.getAttribute('alt')||'';
-    el.setAttribute('alt',(l!=='en'&&el.getAttribute('data-alt-'+l))?el.getAttribute('data-alt-'+l):el._alt);
+    el.setAttribute('alt',l==='es'?el.getAttribute('data-alt-es'):el._alt);
   });
-  $$('.hx').forEach(function(el){el.textContent=el.getAttribute('data-'+l)||el.getAttribute('data-en')});
-  if(W.ULI_TITLE){ D.title = (W.ULI_TITLE[l]||W.ULI_TITLE.en); }
+  $$('.hx').forEach(function(el){el.textContent=l==='es'?el.getAttribute('data-es'):el.getAttribute('data-en')});
+  if(W.ULI_TITLE){ D.title = (l==='es'?W.ULI_TITLE.es:W.ULI_TITLE.en); }
   $$('.lang button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-l')===l)});
   $$('.count').forEach(function(c){ if(c._done) c.textContent=fmtCount(c,+c.getAttribute('data-to')); });
   var btn=$('.fsend'); if(btn&&!btn.disabled&&btn._lbl){ /* label handled by data-i */ }
@@ -134,7 +110,7 @@ $$('.lang button').forEach(function(b){b.addEventListener('click',function(){app
 /* ---------- reveal + counters ---------- */
 function fmtCount(el,n){
   var s=Math.round(n).toString();
-  if(el.getAttribute('data-fmt')==='1') s=Math.round(n).toLocaleString(LANG==='en'?'en-US':'de-DE');
+  if(el.getAttribute('data-fmt')==='1') s=Math.round(n).toLocaleString(LANG==='es'?'de-DE':'en-US');
   return s+(el.getAttribute('data-suf')||'');
 }
 function runCount(el){
@@ -184,12 +160,31 @@ $$('form.uli-form').forEach(function(f){
     var data=Object.fromEntries(new FormData(f)); data.language=LANG;
     fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
     .then(function(r){return r.json()}).then(function(j){
-      if(j.success){ ok.style.display='block'; btn.textContent=T().sent; f.reset(); setTimeout(function(){btn.innerHTML=lbl;btn.disabled=false},4000); }
+      if(j.success){ try{gtag('event','generate_lead',{form_id:f.id||'form',investor_type:data.investor_type||'',investment_range:data.interest||'',language:LANG})}catch(_){} ok.style.display='block'; btn.textContent=T().sent; f.reset(); setTimeout(function(){btn.innerHTML=lbl;btn.disabled=false},4000); }
       else { console.error('Web3Forms:',j); throw new Error((j&&j.message)||'x'); }
     }).catch(function(err){ console.error('Form error:',err); var d=$('.fdbg',er); if(!d){d=D.createElement('div');d.className='fdbg';d.style.cssText='font-size:11px;opacity:.7;margin-top:6px';er.appendChild(d);} d.textContent=(err&&err.message&&err.message!=='x')?('['+err.message+']'):''; er.style.display='block'; btn.innerHTML=lbl; btn.disabled=false; });
   });
 });
 
+/* ---------- analytics: consent banner + click events ---------- */
+(function(){
+function gt(){try{gtag.apply(null,arguments)}catch(e){}}
+function grant(v){var s=v?'granted':'denied';gt('consent','update',{analytics_storage:s,ad_storage:s,ad_user_data:s,ad_personalization:s});}
+var st=null;try{st=localStorage.getItem('uli_consent')}catch(e){}
+if(!st){
+  var es=(LANG==='es'), b=D.createElement('div'); b.id='cookieBar'; b.setAttribute('role','dialog'); b.setAttribute('aria-label','Cookies');
+  b.innerHTML='<p>'+(es?'Usamos Google Analytics para entender cómo se usa el sitio. Solo se activa si lo acepta. ':'We use Google Analytics to understand how the site is used. It only runs if you accept. ')+'<a href="privacy-policy.html">'+(es?'Más información':'Learn more')+'</a></p><div><button type="button" data-c="no">'+(es?'Rechazar':'Decline')+'</button><button type="button" data-c="yes" class="y">'+(es?'Aceptar':'Accept')+'</button></div>';
+  D.body.appendChild(b);
+  b.addEventListener('click',function(e){var c=e.target.getAttribute&&e.target.getAttribute('data-c');if(!c)return;var v=c==='yes';try{localStorage.setItem('uli_consent',v?'granted':'denied')}catch(_){}grant(v);b.remove();});
+}
+D.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href')||'';
+  if(h.indexOf('wa.link')>-1||h.indexOf('wa.me')>-1)gt('event','click_whatsapp',{link_url:h});
+  else if(h.indexOf('linkedin.com')>-1)gt('event','click_linkedin',{link_url:h});
+  else if(h.indexOf('mailto:')===0)gt('event','click_email');
+  else if(a.classList.contains('btn')&&h.indexOf('#contact')>-1)gt('event','click_request_meeting');
+});
+})();
+
 /* ---------- init ---------- */
-if(LANG==='es'||LANG==='pt') applyLang(LANG); else { $$('.lang button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-l')==='en')}); }
+if(LANG==='es') applyLang('es'); else { $$('.lang button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-l')==='en')}); }
 })();
