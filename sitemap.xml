@@ -1,11 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://uruguaylandinvest.com/</loc></url>
-  <url><loc>https://uruguaylandinvest.com/opportunities.html</loc></url>
-  <url><loc>https://uruguaylandinvest.com/how-we-work.html</loc></url>
-  <url><loc>https://uruguaylandinvest.com/next-step.html</loc></url>
-  <url><loc>https://uruguaylandinvest.com/team.html</loc></url>
-  <url><loc>https://uruguaylandinvest.com/legal-notice.html</loc></url>
-  <url><loc>https://uruguaylandinvest.com/privacy-policy.html</loc></url>
-  <url><loc>https://uruguaylandinvest.com/terms-of-use.html</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://uruguaylandinvest.com/</loc><lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uruguaylandinvest.com/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://uruguaylandinvest.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://uruguaylandinvest.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://uruguaylandinvest.com/"/>
+  </url>
+  <url><loc>https://uruguaylandinvest.com/pt/</loc><lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uruguaylandinvest.com/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://uruguaylandinvest.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://uruguaylandinvest.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://uruguaylandinvest.com/"/>
+  </url>
+  <url><loc>https://uruguaylandinvest.com/es/</loc><lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uruguaylandinvest.com/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://uruguaylandinvest.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://uruguaylandinvest.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://uruguaylandinvest.com/"/>
+  </url>
+  <url><loc>https://uruguaylandinvest.com/opportunities.html</loc><lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uruguaylandinvest.com/opportunities.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://uruguaylandinvest.com/pt/opportunities.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://uruguaylandinvest.com/es/opportunities.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://uruguaylandinvest.com/opportunities.html"/>
+  </url>
+  <url><loc>https://uruguaylandinvest.com/pt/opportunities.html</loc><lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uruguaylandinvest.com/opportunities.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://uruguaylandinvest.com/pt/opportunities.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://uruguaylandinvest.com/es/opportunities.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://uruguaylandinvest.com/opportunities.html"/>
+  </url>
+  <url><loc>https://uruguaylandinvest.com/es/opportunities.html</loc><lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uruguaylandinvest.com/opportunities.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://uruguaylandinvest.com/pt/opportunities.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://uruguaylandinvest.com/es/opportunities.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://uruguaylandinvest.com/opportunities.html"/>
+  </url>
+  <url><loc>https://uruguaylandinvest.com/how-we-work.html</loc><lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uruguaylandinvest.com/how-we-work.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://uruguaylandinvest.com/pt/how-we-work.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://uruguaylandinvest.com/es/how-we-work.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://uruguaylandinvest.com/how-we-work.html"/>
+  </url>
+  <url><loc>https://uruguaylandinvest.com/pt/how-we-work.html</loc><lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uruguaylandinvest.com/how-we-work.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://uruguaylandinvest.com/pt/how-we-work.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://uruguaylandinvest.com/es/how-we-work.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://uruguaylandinvest.com/how-we-work.html"/>
+  </url>
+  <url><loc>https://uruguaylandinvest.com/es/how-we-work.html</loc><lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uruguaylandinvest.com/how-we-work.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://uruguaylandinvest.com/pt/how-we-work.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://uruguaylandinvest.com/es/how-we-work.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://uruguaylandinvest.com/how-we-work.html"/>
+  </url>
+  <url><loc>https://uruguaylandinvest.com/next-step.html</loc><lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uruguaylandinvest.com/next-step.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://uruguaylandinvest.com/pt/next-step.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://uruguaylandinvest.com/es/next-step.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://uruguaylandinvest.com/next-step.html"/>
+  </url>
+  <url><loc>https://uruguaylandinvest.com/pt/next-step.html</loc><lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uruguaylandinvest.com/next-step.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://uruguaylandinvest.com/pt/next-step.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://uruguaylandinvest.com/es/next-step.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://uruguaylandinvest.com/next-step.html"/>
+  </url>
+  <url><loc>https://uruguaylandinvest.com/es/next-step.html</loc><lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uruguaylandinvest.com/next-step.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://uruguaylandinvest.com/pt/next-step.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://uruguaylandinvest.com/es/next-step.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://uruguaylandinvest.com/next-step.html"/>
+  </url>
+  <url><loc>https://uruguaylandinvest.com/team.html</loc><lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uruguaylandinvest.com/team.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://uruguaylandinvest.com/pt/team.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://uruguaylandinvest.com/es/team.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://uruguaylandinvest.com/team.html"/>
+  </url>
+  <url><loc>https://uruguaylandinvest.com/pt/team.html</loc><lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uruguaylandinvest.com/team.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://uruguaylandinvest.com/pt/team.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://uruguaylandinvest.com/es/team.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://uruguaylandinvest.com/team.html"/>
+  </url>
+  <url><loc>https://uruguaylandinvest.com/es/team.html</loc><lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://uruguaylandinvest.com/team.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://uruguaylandinvest.com/pt/team.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://uruguaylandinvest.com/es/team.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://uruguaylandinvest.com/team.html"/>
+  </url>
+  <url><loc>https://uruguaylandinvest.com/legal-notice.html</loc><lastmod>2026-10-31</lastmod>
+  </url>
+  <url><loc>https://uruguaylandinvest.com/privacy-policy.html</loc><lastmod>2026-10-31</lastmod>
+  </url>
+  <url><loc>https://uruguaylandinvest.com/terms-of-use.html</loc><lastmod>2026-10-31</lastmod>
+  </url>
 </urlset>
