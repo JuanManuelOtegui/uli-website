@@ -4,8 +4,8 @@
 var D=document, W=window;
 var ES=W.ULI_ES||{};
 var LANG='en';
-try{ LANG=localStorage.getItem('uli_lang')||'en'; }catch(e){}
-try{ var q=new URLSearchParams(location.search).get('lang'); if(q==='es'||q==='en') LANG=q; }catch(e){}
+try{ LANG=localStorage.getItem('uli_lang')||(((navigator.language||'').toLowerCase().indexOf('pt')===0)?'pt':'en'); }catch(e){}
+try{ var q=new URLSearchParams(location.search).get('lang'); if(q==='es'||q==='en'||q==='pt') LANG=q; }catch(e){}
 
 /* ---------- content that lives in JS (modals) ---------- */
 var UI={
@@ -57,10 +57,12 @@ var MODELS=[
       tr:['Cultivos principales: soja, maíz, trigo, cebada y colza','Doble cultivo verano + invierno en suelos de alto índice CONEAT','Zona arrocera: arrendamiento de aproximadamente US$296 por hectárea por año sobre tierras de US$3.000–5.000 por hectárea (estimación de ULI; rendimiento bruto ~6–10%)','Producción propia o arrendamiento fijo a un productor certificado']}}
 ];
 
+(function(){var X=W.ULI_PT_X; if(!X) return; UI.pt=X.ui; for(var k in X.adv){ if(ADV[k]) ADV[k].pt=X.adv[k]; } X.models.forEach(function(m,i){ if(MODELS[i]) MODELS[i].pt=m; }); })();
+
 /* ---------- helpers ---------- */
 function $(s,r){return (r||D).querySelector(s)}
 function $$(s,r){return Array.prototype.slice.call((r||D).querySelectorAll(s))}
-function T(){return UI[LANG]}
+function T(){return UI[LANG]||UI.es}
 
 /* ---------- language ---------- */
 function applyLang(l){
@@ -68,19 +70,23 @@ function applyLang(l){
   D.documentElement.lang=l;
   $$('[data-i]').forEach(function(el){
     if(el._en===undefined) el._en=el.innerHTML;
-    var v=(l==='es'&&ES[el.getAttribute('data-i')]!=null)?ES[el.getAttribute('data-i')]:el._en;
+    var key=el.getAttribute('data-i'), P=W.ULI_PT||{}, v=el._en;
+    if(l==='pt') v=(P[key]!=null)?P[key]:((ES[key]!=null)?ES[key]:el._en);
+    else if(l==='es'&&ES[key]!=null) v=ES[key];
     el.innerHTML=v;
   });
   $$('[data-ph-es]').forEach(function(el){
     if(el._ph===undefined) el._ph=el.getAttribute('placeholder')||'';
-    el.setAttribute('placeholder',l==='es'?el.getAttribute('data-ph-es'):el._ph);
+    var esv=el.getAttribute('data-ph-es'), phm=(W.ULI_PT_X&&W.ULI_PT_X.ph)||{};
+    el.setAttribute('placeholder',l==='en'?el._ph:(l==='pt'&&phm[esv]?phm[esv]:esv));
   });
   $$('[data-alt-es]').forEach(function(el){
     if(el._alt===undefined) el._alt=el.getAttribute('alt')||'';
-    el.setAttribute('alt',l==='es'?el.getAttribute('data-alt-es'):el._alt);
+    var esa=el.getAttribute('data-alt-es'), alm=(W.ULI_PT_X&&W.ULI_PT_X.alt)||{};
+    el.setAttribute('alt',l==='en'?el._alt:(l==='pt'&&alm[esa]?alm[esa]:esa));
   });
-  $$('.hx').forEach(function(el){el.textContent=l==='es'?el.getAttribute('data-es'):el.getAttribute('data-en')});
-  if(W.ULI_TITLE){ D.title = (l==='es'?W.ULI_TITLE.es:W.ULI_TITLE.en); }
+  $$('.hx').forEach(function(el){el.textContent=l==='en'?el.getAttribute('data-en'):el.getAttribute('data-es')});
+  if(W.ULI_TITLE){ var pf=(location.pathname.split('/').pop()||'index.html'); if(pf.indexOf('.')<0) pf+='.html'; var ptt=(W.ULI_PT_TITLES||{})[pf]; D.title = (l==='pt'&&ptt)?ptt:(l==='en'?W.ULI_TITLE.en:W.ULI_TITLE.es); }
   $$('.lang button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-l')===l)});
   $$('.count').forEach(function(c){ if(c._done) c.textContent=fmtCount(c,+c.getAttribute('data-to')); });
   var btn=$('.fsend'); if(btn&&!btn.disabled&&btn._lbl){ /* label handled by data-i */ }
@@ -110,7 +116,7 @@ $$('.lang button').forEach(function(b){b.addEventListener('click',function(){app
 /* ---------- reveal + counters ---------- */
 function fmtCount(el,n){
   var s=Math.round(n).toString();
-  if(el.getAttribute('data-fmt')==='1') s=Math.round(n).toLocaleString(LANG==='es'?'de-DE':'en-US');
+  if(el.getAttribute('data-fmt')==='1') s=Math.round(n).toLocaleString(LANG==='en'?'en-US':'de-DE');
   return s+(el.getAttribute('data-suf')||'');
 }
 function runCount(el){
@@ -127,13 +133,13 @@ if('IntersectionObserver' in W){
 function lock(on){D.body.style.overflow=on?'hidden':''}
 function openAdv(id,keep){
   var d=ADV[id]; if(!d) return; W._advId=id;
-  var c=d[LANG];
+  var c=d[LANG]||d.es;
   $('#advIco').innerHTML=d.ico; $('#advTag').textContent=T().tag_adv; $('#advTitle').textContent=c[0]; $('#advBody').textContent=c[1];
   $('#advOv').classList.add('open'); if(!keep) lock(true);
 }
 function closeAdv(){ var o=$('#advOv'); if(o){o.classList.remove('open'); lock(false);} W._advId=null; }
 function openModel(i,keep){
-  var m=MODELS[i]; if(!m) return; W._modId=i; var c=m[LANG], u=T();
+  var m=MODELS[i]; if(!m) return; W._modId=i; var c=m[LANG]||m.es, u=T();
   var h='<div class="mtag">'+c.tag+'</div><h3>'+c.t+'</h3><div class="mrule"></div>'+
    '<div class="mdata"><div><span class="k">'+u.entry+'</span><span class="v">'+c.price+'</span></div>'+
    '<div><span class="k">'+u.lease+'</span><span class="v sm">'+c.rent+'</span></div>'+
@@ -172,8 +178,8 @@ function gt(){try{gtag.apply(null,arguments)}catch(e){}}
 function grant(v){var s=v?'granted':'denied';gt('consent','update',{analytics_storage:s,ad_storage:s,ad_user_data:s,ad_personalization:s});}
 var st=null;try{st=localStorage.getItem('uli_consent')}catch(e){}
 if(!st){
-  var es=(LANG==='es'), b=D.createElement('div'); b.id='cookieBar'; b.setAttribute('role','dialog'); b.setAttribute('aria-label','Cookies');
-  b.innerHTML='<p>'+(es?'Usamos Google Analytics para entender cómo se usa el sitio. Solo se activa si lo acepta. ':'We use Google Analytics to understand how the site is used. It only runs if you accept. ')+'<a href="privacy-policy.html">'+(es?'Más información':'Learn more')+'</a></p><div><button type="button" data-c="no">'+(es?'Rechazar':'Decline')+'</button><button type="button" data-c="yes" class="y">'+(es?'Aceptar':'Accept')+'</button></div>';
+  var es=(LANG==='es'), pt=(LANG==='pt'), b=D.createElement('div'); b.id='cookieBar'; b.setAttribute('role','dialog'); b.setAttribute('aria-label','Cookies');
+  b.innerHTML='<p>'+(pt?'Usamos o Google Analytics para entender como o site é usado. Só é ativado se você aceitar. ':es?'Usamos Google Analytics para entender cómo se usa el sitio. Solo se activa si lo acepta. ':'We use Google Analytics to understand how the site is used. It only runs if you accept. ')+'<a href="privacy-policy.html">'+(pt?'Saiba mais':es?'Más información':'Learn more')+'</a></p><div><button type="button" data-c="no">'+(pt?'Recusar':es?'Rechazar':'Decline')+'</button><button type="button" data-c="yes" class="y">'+(pt?'Aceitar':es?'Aceptar':'Accept')+'</button></div>';
   D.body.appendChild(b);
   b.addEventListener('click',function(e){var c=e.target.getAttribute&&e.target.getAttribute('data-c');if(!c)return;var v=c==='yes';try{localStorage.setItem('uli_consent',v?'granted':'denied')}catch(_){}grant(v);b.remove();});
 }
@@ -186,5 +192,5 @@ D.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest(
 })();
 
 /* ---------- init ---------- */
-if(LANG==='es') applyLang('es'); else { $$('.lang button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-l')==='en')}); }
+if(LANG!=='en') applyLang(LANG); else { $$('.lang button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-l')==='en')}); }
 })();
